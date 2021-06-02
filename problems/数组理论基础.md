@@ -866,6 +866,51 @@ class Counter extends HashMap<Character, Integer> {
         return matrix;
     }
 
+        //去掉冗餘循環
+        public int[][] generateMatrix(int n) {
+        boolean isHorizontal = true;
+        boolean isAscend = true;
+        int[][] matrix = new int[n][n];
+        //规律总结如下:
+        //横竖横竖横竖  一定 (即每1轮变一次)
+        //升升降降升升  一定 (即每2轮变一次)
+        //除第一行外,每2轮会减少输出一个数字
+        int fixed_n = n;
+        int fixed_size = n * n;
+        int k = 0;
+        int num = 1;
+        int index = -1; //该变量可以看作是将二维数组当成一维数组时的数组下标,其与二维数组下标的关系,
+        //必定是 matrix[index / fixed_n][index - (index / fixed_n) * fixed_n]
+
+        
+        while (n > 0) {//测试时避免死循环用 && (m > 0 || n > 0)
+        // System.err.println("=========================================================");
+
+        // System.err.println((isHorizontal ? "水平 " : "垂直 ") + (isAscend ? "升序 " : "降序 ")+ ", n = " + n);
+
+        for (int i = 0; i < n; i++) {
+        index = isHorizontal ? (isAscend ? index + 1 : index - 1) : (isAscend ? index + fixed_n : index - fixed_n);
+        // System.err.println("index = " + index);
+        matrix[index / fixed_n][index - (index / fixed_n) * fixed_n] = num++;
+        // for (int[] ints : matrix) {
+        //     System.err.println("ints = " + Arrays.toString(ints));
+        // }
+        }
+        if (k % 2 == 0) {
+        n--;
+        // System.err.println("n--");
+        }
+
+        isHorizontal = !isHorizontal;
+
+        if ((k + 1) % 2 == 0) {
+        isAscend = !isAscend;
+        }
+        k++;
+        }
+        return matrix;
+        }
+    
 ```
 模拟类的题目在数组中很常见，不涉及到什么算法，就是单纯的模拟，十分考察大家对代码的掌控能力。
 
