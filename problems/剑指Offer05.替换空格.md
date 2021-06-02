@@ -1,9 +1,10 @@
 <p align="center">
-  <a href="https://mp.weixin.qq.com/s/QVF6upVMSbgvZy8lHZS3CQ"><img src="https://img.shields.io/badge/知识星球-代码随想录-blue" alt=""></a>
+  <a href="https://mp.weixin.qq.com/s/RsdcQ9umo09R6cfnwXZlrQ"><img src="https://img.shields.io/badge/PDF下载-代码随想录-blueviolet" alt=""></a>
   <a href="https://mp.weixin.qq.com/s/b66DFkOp8OOxdZC_xLZxfw"><img src="https://img.shields.io/badge/刷题-微信群-green" alt=""></a>
-  <a href="https://img-blog.csdnimg.cn/20201210231711160.png"><img src="https://img.shields.io/badge/公众号-代码随想录-brightgreen" alt=""></a>
   <a href="https://space.bilibili.com/525438321"><img src="https://img.shields.io/badge/B站-代码随想录-orange" alt=""></a>
+  <a href="https://mp.weixin.qq.com/s/QVF6upVMSbgvZy8lHZS3CQ"><img src="https://img.shields.io/badge/知识星球-代码随想录-blue" alt=""></a>
 </p>
+<p align="center"><strong>欢迎大家<a href="https://mp.weixin.qq.com/s/tqCxrMEU-ajQumL1i8im9A">参与本项目</a>，贡献其他语言版本的代码，拥抱开源，让更多学习算法的小伙伴们收益！</strong></p>
 
 
 # 题目：剑指Offer 05.替换空格
@@ -121,11 +122,44 @@ for (int i = 0; i < a.size(); i++) {
 
 
 
-------------------------
 
-* 微信：[程序员Carl](https://mp.weixin.qq.com/s/b66DFkOp8OOxdZC_xLZxfw)
-* B站：[代码随想录](https://space.bilibili.com/525438321)
+
+
+## 其他语言版本
+
+
+Java：
+```Java
+//使用一个新的对象，复制 str，复制的过程对其判断，是空格则替换，否则直接复制，类似于数组复制
+public static String replaceSpace(StringBuffer str) {
+        if (str == null) {
+            return null;
+        }
+		//选用 StringBuilder 单线程使用，比较快，选不选都行
+        StringBuilder sb = new StringBuilder();
+		//使用 sb 逐个复制 str ，碰到空格则替换，否则直接复制
+        for (int i = 0; i < str.length(); i++) {
+		//str.charAt(i) 为 char 类型，为了比较需要将其转为和 " " 相同的字符串类型
+            if (" ".equals(String.valueOf(str.charAt(i)))){
+                sb.append("%20");
+            } else {
+                sb.append(str.charAt(i));
+            }
+        }
+        return sb.toString();
+    }
+```
+
+Python：
+
+
+Go：
+
+
+
+
+-----------------------
+* 作者微信：[程序员Carl](https://mp.weixin.qq.com/s/b66DFkOp8OOxdZC_xLZxfw)
+* B站视频：[代码随想录](https://space.bilibili.com/525438321)
 * 知识星球：[代码随想录](https://mp.weixin.qq.com/s/QVF6upVMSbgvZy8lHZS3CQ)
-
-![](../pics/公众号.png)
-
+<div align="center"><img src=../pics/公众号.png width=450 alt=> </img></div>
